@@ -1,0 +1,2 @@
+# DiktuokeDrika
+Full stuck
