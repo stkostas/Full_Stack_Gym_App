@@ -1,0 +1,116 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Papei Gym</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/login-signup.css">
+</head>
+
+<body>
+
+   <div class="block1" id="block1id">
+    <h1>PAPEI GYM</h1>
+    <h2>Welcome</h2>
+  </div>
+
+  <div class="blockMain" id="blockMainid">
+    <div class="block2" id="block2id">
+      <!-- Display trainers data -->
+      <h2>Our Trainers</h2>
+      <ul>
+        <% data.trainers.forEach(trainer=> { %>
+          <li class="trainer-item">
+            <span class="trainer-name">
+             <%= trainer.firstName %>
+             <%= trainer.lastName %>
+            </span>
+          </li>
+          <% }); %>
+      </ul>
+    </div>
+
+    <div class="block3" id="block3id">
+      <!-- Display programs data -->
+      <h2>Our Programs</h2>
+      <ul>
+        <% data.programs.forEach(program=> { %>
+          <li class="program-item">
+            <span class="program-name">
+              <%= program.activity %>
+            </span>
+          </li>
+          <% }); %>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="block4" id="block4id">
+    <h2>Login | Sign Up</h2>
+        
+    <div class="auth-buttons">
+      <button class="login-button" onclick="showLoginForm()">Login</button>
+      <button class="signup-button" onclick="showSignupForm()">Sign Up</button>
+    </div>
+
+    <div class="forms-container" id="forms-container">
+      <!-- Login Form -->
+       <form id="login-form" class="form" action="/login" method="post">
+        <label for="login-username">Username:</label>
+        <input type="text" id="login-username" name="username" autocomplete="off" required>
+        <label for="login-password">Password:</label>
+        <input type="password" id="login-password" name="password" autocomplete="off" required>
+
+        <button type="submit">Login</button>
+      </form>
+
+      <!-- Signup Form -->
+      <form id="signup-form" class="form" action="/signup" method="post">
+        <label for="signup-firstname">First Name:</label>
+        <input type="text" id="signup-firstname" name="signupFirstname" autocomplete="off" required>
+        <label for="signup-lastname">Last Name:</label>
+        <input type="text" id="signup-lastname" name="signupLastname" autocomplete="off" required>
+        <label for="signup-country">Country:</label>
+        <input type="text" id="signup-country" name="signupCountry" autocomplete="off" required>
+        <label for="signup-city">City:</label>
+        <input type="text" id="signup-city" name="signupCity" autocomplete="off" required>
+        <label for="signup-address">Address:</label>
+        <input type="text" id="signup-address" name="signupAddress" autocomplete="off" required>
+        <label for="signup-email">Email:</label>
+        <input type="text" id="signup-email" name="signupEmail" autocomplete="off" required>
+        <label for="signup-username">Username:</label>
+        <input type="text" id="signup-username" name="signupUsername" autocomplete="off" required>
+        <label for="signup-password">Password:</label>
+        <input type="text" id="signup-password" name="signupPassword" autocomplete="off" required>
+
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+
+  <% if (successMessage) { %>
+    <script>
+      // Display a pop-up message for a few seconds
+      alert("<%= successMessage %>");
+
+      // Clear query parameters and update the URL
+      const url = new URL(window.location.href);
+      url.searchParams.delete('successMessage');
+      window.history.replaceState({}, document.title, url.href);
+    </script>
+  <% } %>
+
+
+
+  <script src="/login-signup.js"></script>
+
+
+</body>
+
+</html>

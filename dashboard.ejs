@@ -1,0 +1,68 @@
+<!-- views/dashboard.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/dashboard.css">
+</head>
+
+<body>
+
+  <div class="block1" id="block1id">
+    <h1>Welcome to the Dashboard, <%= user.username %>!</h1>
+        <% if (user) { %>
+          <div class="logout-button-container">
+            <form method="post" action="/logout">
+              <button class="logout-button" type="submit">Logout</button>
+            </form>
+          </div>
+          <% } %>
+  </div>
+  
+
+  <div class="blockMain" id="blockMainid">
+    <div class="block2" id="block2id">
+      <h2>Announcements</h2>
+      <ul>
+        <% if (data && data.announcements) { %>
+          <% data.announcements.forEach((announcement, index, array)=> { %>
+            <li>
+              <%= announcement.text %>
+            </li>
+            <% if (index < array.length - 1) { %>
+              <hr>
+            <% } %>
+          <% }); %>
+        <% } else { %>
+          <li>No announcements available.</li>
+        <% } %>
+      </ul>
+
+    </div>
+
+
+    <div class="block3" id="block3id">
+      <!-- Display all users -->
+      <h2>Programme Schedule</h2>
+      <ul>
+        <% data.schedule.forEach(each=> { %>
+          <li>
+            <%= each.activity %> : 
+            <%= each.day %>
+            <%= each.time %> with
+            <%= each.trainer.firstName %>
+            <%= each.trainer.lastName %>,
+            spots left:<%= each.capacity %>
+          </li>
+          <% }); %>
+      </ul>
+    </div>
+  </div>
+
+</body>
+
+</html>

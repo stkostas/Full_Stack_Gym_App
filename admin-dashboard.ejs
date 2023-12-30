@@ -1,0 +1,118 @@
+<!-- views/admin-dashboard.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/admin-dashboard.css">
+</head>
+
+<body>
+
+  <div class="block1" id="block1id">
+    <h1>Admin-Dashboard | <%= user.username %></h1>
+        <% if (user) { %>
+          <div class="logout-button-container">
+            <form method="post" action="/logout">
+              <button class="logout-button" type="submit">Logout</button>
+            </form>
+          </div>
+          <% } %>
+  </div>
+
+  <div class="blockMain" id="blockMainid">
+    <div class="block2" id="block2id">
+      <!-- Display all users -->
+      <h2>All Database Users</h2>
+      <ul>
+          <% data.users.forEach(user=> { %>
+              <li>
+                  <%= user.firstName %>
+                  <%= user.lastName %>
+              </li>
+              <% }); %>
+      </ul>
+    </div>
+
+
+    <div class="block3" id="block3id">
+      <!-- Display all users -->
+      <h2>Signup Requests</h2>
+      <ul>
+        <% if (data.signupRequests && data.signupRequests.length > 0) { %>
+          <% data.signupRequests.forEach((request, index) => { %>
+            <li>
+              <%= request.firstName %> <%= request.lastName %> |
+              <%= request.country %> ,
+              <%= request.city %> ,
+              <%= request.address %> |
+              <%= request.email %> |
+              <%= request.username %> |
+              <%= request.password %>
+              <form method="post" action="/admin-action">
+                <!-- Hidden field to include user ID in the form submission -->
+                <input type="hidden" name="userId" value="<%= request._id %>">
+
+                <!-- Radio buttons for admin actions -->
+                <label>
+                    <input type="radio" name="action" value="acceptUser" required> Accept as User
+                </label>
+                <label>
+                    <input type="radio" name="action" value="acceptAdmin" required> Accept as Admin
+                </label>
+                <label>
+                    <input type="radio" name="action" value="decline" required> Decline
+                </label>
+
+                <!-- Submit button -->
+                <button type="submit">Submit</button>
+            </form>
+            </li>
+            <% if (index < data.signupRequests.length - 1) { %>
+              <hr>
+            <% } %>
+          <% }); %>
+        <% } else { %>
+            <li>No signup requests available.</li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="blockMain2" id="blockMain2id">
+    <div class="block4" id="block4id">
+      <h2>Announcements</h2>
+      <ul>
+        <% if (data && data.announcements) { %>
+          <% data.announcements.forEach((announcement, index, array)=> { %>
+            <li>
+              <%= announcement.text %>
+            </li>
+            <% if (index < array.length - 1) { %>
+              <hr>
+            <% } %>
+          <% }); %>
+        <% } else { %>
+          <li>No announcements available.</li>
+        <% } %>
+      </ul>
+      
+      <form method="post" action="/admin-dashboard/add-announcement">
+        <label for="announcement-text">New Announcement:</label>
+        <input type="text" id="announcement-text" name="announcement-text" autocomplete="off" required>
+        <button type="submit">Add Announcement</button>
+      </form>
+
+    </div>
+
+    <div class="block5" id="block5id">
+
+    </div>
+  </div>
+
+</body>
+
+</html>
