@@ -7,21 +7,21 @@ This project is a web-based information system designed to manage users and book
 ## Table of Contents
 
 1. Introduction
-2. [System Description](#system-description)
-   - [Administrative Subsystem](#administrative-subsystem)
-   - [User Subsystem](#user-subsystem)
-3. [Implementation](#implementation)
-   - [Technologies](#technologies)
-   - [Database](#database)
-   - [Web Services](#web-services)
-4. [Installation Guide](#installation-guide)
-5. [Usage Guide](#usage-guide)
-   - [Admin Usage](#admin-usage)
-   - [User Usage](#user-usage)
-6. [Gantt Chart](#gantt-chart)
-7. [Sources](#sources)
-8. [Contributors](#contributors)
-9. [License](#license)
+2. System Description
+   - Administrative Subsystem
+   - User Subsystem
+3. Implementation
+   - Technologies
+   - Database
+   - Web Services
+4. Installation Guide
+5. Usage Guide
+   - Admin Usage
+   - User Usage
+6. Gantt Chart
+7. Sources
+8. Contributors
+9. License
 
 ## Introduction
 
