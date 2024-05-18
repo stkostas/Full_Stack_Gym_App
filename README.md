@@ -113,7 +113,53 @@ The database is hosted on MongoDB Atlas and includes collections such as 'users'
 
 ### Steps
 
-1. Clone the repository:
+1. Navigate to the project directory:
    ```bash
    cd <project-directory>
+2. Install the required dependencies:
+   ```bash
+   npm install
+3. Run the application:
+   ```bash
+   node app.js
+The application will be accessible at `http://localhost:5500`.
+
+## Usage Guide
+
+### Admin Usage
+
+1. **Login:**
+   - Navigate to `http://localhost:5500`.
+   - Login with admin credentials:
+     - **Username:** mixalis
+     - **Password:** mixalis123
+2. **Manage Users:**
+   - Approve or reject registration requests.
+   - Edit or delete user details.
+3. **Manage Announcements:**
+   - Post, edit, or delete announcements.
+4. **Manage Programs:**
+   - Configure the schedule for each exercise.
+   - Edit or delete program details.
+
+### User Usage
+
+1. **Registration:**
+   - Navigate to `http://localhost:5500`.
+   - Click on "Sign Up" and fill in the registration form.
+   - Wait for admin approval.
+2. **Booking Services:**
+   - Once logged in, browse available services and schedule.
+   - Book services and view your booking history.
+3. **Logout:**
+   - Click the logout button located at the top left of the webpage to log out.
+## Sources
+
+1. [Color Hunt](https://colorhunt.co/)
+2. [W3Schools](https://www.w3schools.com/)
+3. [MongoDB Login](https://account.mongodb.com/account/login)
+4. [Mozilla Developer Network - HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
+5. [Full Stack CRUD Operations | React, Node, Express & MongoDB](https://www.youtube.com/watch?v=xElA9mGi-I0)
+6. [Full Stack Web Development for Beginners](https://www.youtube.com/watch?v=nu_pCVPKzTk)
+
 
