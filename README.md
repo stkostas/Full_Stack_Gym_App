@@ -142,6 +142,8 @@ The application will be accessible at `http://localhost:5500`.
    - Configure the schedule for each exercise.
    - Edit or delete program details.
 
+
+
 ### User Usage
 
 1. **Registration:**
